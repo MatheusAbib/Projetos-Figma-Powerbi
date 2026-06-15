@@ -9,6 +9,7 @@
       --cream: #f5f3ee;
       --green-deep: #505039;
       --green-soft: #a7aa63;
+      --matheus: #a7aa63;
       --red-deep: #551d21;
       --red-soft: #86383a;
       --fg: #f5f3ee;
@@ -39,6 +40,7 @@
       --text-color: var(--cream);
       --text-secondary: var(--fg-muted);
       --card-bg: var(--surface-1);
+      --modal-bg: var(--surface-1);
       --card-border: var(--hairline);
       --hover-bg: var(--surface-2);
       --accent: var(--green-deep);
@@ -58,8 +60,10 @@
       --bg-url: url('./assets/bg-desktop-light.png');
       --overlay-opacity: 0.2;
       --text-color: var(--ink);
+      --matheus: var(--green-deep);
       --text-secondary: #1c1c1a9e;
-      --card-bg: rgba(245, 243, 238, 0.61);
+      --card-bg: rgba(245, 243, 238, 0.733);
+      --modal-bg: rgba(245, 243, 238, 0.938);
       --card-border: rgba(28, 28, 26, 0.08);
       --hover-bg: rgba(28, 28, 26, 0.04);
       --shadow-sm: 0 8px 25px rgba(0, 0, 0, 0.06);
@@ -442,7 +446,7 @@ body::after {
     }
 
     footer a {
-      color: #a7aa63;
+      color: var(--matheus);
       text-decoration: none;
       font-weight: 700;
       transition: all 0.2s;
@@ -468,7 +472,7 @@ body::after {
     }
 
     .modal-card {
-      background: var(--card-bg);
+      background: var(--modal-bg);
       backdrop-filter: blur(24px);
       max-width: 1200px;
       width: 100%;
@@ -570,7 +574,7 @@ body::after {
       display: flex;
       align-items: center;
       gap: 8px;
-      color: #a7aa63;
+      color: var(--matheus);
     }
 
     .modal-section p {

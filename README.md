@@ -55,7 +55,6 @@ Bem-vindo(a) ao meu portfólio! Este é um projeto responsivo que reúne todos o
 - [GitHub](https://github.com/MatheusAbib)
 - [LinkedIn](https://www.linkedin.com/in/matheusabib/)
 - [Portfólio](https://matheus-abib-portfolio.netlify.app/)
-- WhatsApp: +55 11 97507-2008
 
 ## 👨‍💻 Sobre o Autor
 
