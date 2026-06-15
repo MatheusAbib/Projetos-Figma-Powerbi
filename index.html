@@ -1,73 +1,134 @@
 <!DOCTYPE html>
-<html lang="pt-br" class="light">
+<html lang="pt-br" class="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Matheus Abib - Dashboards</title>
+  <title>Matheus Abib • UI/UX & Data Analytics</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
-  <link rel="icon" type="image" sizes="16x16" href="assets/painel-de-controle.png">
-
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
-
+  <link rel="icon" type="image/png" sizes="16x16" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23a7aa63'%3E%3Cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="style.css">
-  
 </head>
 <body>
-    <div id="notification">Copiado!</div>
-    <div id="notificationWttp">Número Copiado!</div>
 
-  <div id="container">
-    <!-- Header -->
-    <div id="header">
-      <div id="username" onclick="copyUsername()">Matheus Abib</div>
-      <a href="#" onclick="openModal()" id="about-btn">Sobre mim</a>
-      <div id="theme-toggle" onclick="toggleTheme()"></div>
-    </div>
-
-    <!-- Content -->
-    <div id="content">
-      <div id="profile">
-        <img src="./assets/Eu.jpg" alt="Foto de Matheus Abib">
-        <div id="welcome"></div>
+<div class="glass-panel">
+  <div class="main-header">
+    <div class="header-top">
+      <div class="profile-tag" id="usernameBtn">
+        <img src="./assets/Eu.jpg" alt="Matheus Abib" onerror="this.src='https://ui-avatars.com/api/?name=Matheus+Abib&background=a7aa63&color=fff'">
+        <span>Matheus Abib</span>
       </div>
-
-      <ul id="linkList">
-        <li><a href="https://app.powerbi.com/view?r=eyJrIjoiYzhlNTAyNzctYzk1Ni00Y2UyLWE0MTMtZmE5YWY1ZWMwN2YyIiwidCI6ImNmNzJlMmJkLTdhMmItNDc4My1iZGViLTM5ZDU3YjA3Zjc2ZiIsImMiOjR9" target="_blank">Produção Industrial ao Longo do Tempo</a></li>
-        <li><a href="https://app.powerbi.com/view?r=eyJrIjoiODM1ZjQ1NWMtZmMwYi00NmU4LThmYjQtYzdmMTg4ZjczYWY2IiwidCI6ImNmNzJlMmJkLTdhMmItNDc4My1iZGViLTM5ZDU3YjA3Zjc2ZiIsImMiOjR9" target="_blank">Análise de Campanhas de Marketing</a></li>
-        <li><a href="https://app.powerbi.com/view?r=eyJrIjoiODMwYzUwMjUtODIyYS00NmZhLWI4NzItNDE3MzM5ZGI1NmFiIiwidCI6ImNmNzJlMmJkLTdhMmItNDc4My1iZGViLTM5ZDU3YjA3Zjc2ZiIsImMiOjR9" target="_blank">Análise de Performance do Cliente</a></li>
-        <li><a href="https://app.powerbi.com/view?r=eyJrIjoiMzhhZjJhNzktNjgwOS00ZjhiLWJmZjUtYmFiZjhmMDdlZDViIiwidCI6ImNmNzJlMmJkLTdhMmItNDc4My1iZGViLTM5ZDU3YjA3Zjc2ZiIsImMiOjR9" target="_blank">Análise do Mercado de Ações</a></li>
-        <li><a href="https://app.powerbi.com/view?r=eyJrIjoiNGUzYzJhYTctODgzNy00OGUzLWFlNzgtZDU0YmFkMzdiZThhIiwidCI6ImNmNzJlMmJkLTdhMmItNDc4My1iZGViLTM5ZDU3YjA3Zjc2ZiIsImMiOjR9" target="_blank">Segmentação de Clientes</a></li>
-        <li><a href="https://app.powerbi.com/view?r=eyJrIjoiYmJiYWExZmUtY2Y4ZS00MjVmLTg2N2MtNWY1ZDEzMGJlNjJmIiwidCI6ImNmNzJlMmJkLTdhMmItNDc4My1iZGViLTM5ZDU3YjA3Zjc2ZiIsImMiOjR9" target="_blank">Balanço Patrimonial</a></li>
-      </ul>
-
-      <div id="social">
-        <a href="https://github.com/MatheusAbib" target="_blank"><ion-icon name="logo-github"></ion-icon></a>
-        <a href="https://matheus-abib-portfolio.netlify.app/" target="_blank"><ion-icon name="briefcase-outline"></ion-icon></a>
-        <a href="#" onclick="copyWhatsApp()"><ion-icon name="logo-whatsapp"></ion-icon></a>
-        <a href="https://www.linkedin.com/in/matheusabib/" target="_blank"><ion-icon name="logo-linkedin"></ion-icon></a>
+      <div class="typewriter-area">
+        <div id="dynamicGreeting"></div>
+        <div class="sub-line" id="welcomeMessage"></div>
       </div>
-
-      <footer>Feito por <a href="https://matheus-abib-portfolio.netlify.app/" style="color: var(--text-color);" target="_blank">Matheus Abib</a></footer>
+      <div class="header-actions">
+        <button class="btn-ghost" id="aboutBtnGlobal">
+          <ion-icon name="person-circle-outline"></ion-icon> Sobre mim
+        </button>
+        <label class="theme-switch">
+          <input type="checkbox" id="theme-toggle-checkbox">
+          <span class="theme-slider">
+            <ion-icon name="moon-outline" class="theme-icon sun-icon"></ion-icon>
+            <ion-icon name="sunny-outline" class="theme-icon moon-icon"></ion-icon>
+          </span>
+        </label>
+      </div>
     </div>
   </div>
 
-  <!-- Modal -->
-  <div id="modal" class="modal">
-    <div class="modal-content">
-      <h2>Sobre mim</h2>
-      <p>
-        Tenho experiência com organização e tratamento de dados no Excel, incluindo boas práticas como uso de formatação em tabelas, validação de dados e separação de dados brutos de análises. Além disso, também sou proficiente no Power BI para criação de dashboards e visualizações de dados.
-      </p>
-      <img src="assets/certificado.png" alt="certificado" class="modal-image">
-      <div class="modal-close" onclick="closeModal()">Fechar</div>
+  <div class="dashboard-row">
+    <div class="project-column">
+      <div class="column-header figma-header">
+        <ion-icon name="brush-outline"></ion-icon>
+        <h2>Figma<span style="font-size: 0.75rem; font-weight: 400; opacity:0.8;    margin: 10px;">UI/UX & protótipos</span></h2>
+      </div>
+      <div class="project-list">
+        <div class="project-card"><a href="https://www.figma.com/design/8W7yZB7prvY3Kf4CRByuEG/Minist%C3%A9rio-do-Meio-Ambiente---redesign?node-id=0-1&t=15aE3SqvRoWE8gOn-1" target="_blank"><span class="project-title"><span class="badge-icon"><ion-icon name="newspaper-outline"></ion-icon></span> Blog de notícias</span><span class="arrow-icon">→</span></a></div>
+        <div class="project-card"><a href="https://www.figma.com/design/FVyHI7iiOeZFx6nHpruJ3n/Calculadora-da-PDS---master?node-id=0-1&t=1b6lp4DyXiD38r6B-1" target="_blank"><span class="project-title"><span class="badge-icon"><ion-icon name="calculator-outline"></ion-icon></span> Calculadora PDS</span><span class="arrow-icon">→</span></a></div>
+        <div class="project-card"><a href="https://www.figma.com/design/doG1DauC0MTdzhOMUKHrS5/Web-Master?t=1b6lp4DyXiD38r6B-1" target="_blank"><span class="project-title"><span class="badge-icon"><ion-icon name="gift-outline"></ion-icon></span> Site de presentes</span><span class="arrow-icon">→</span></a></div>
+        <div class="project-card"><a href="https://www.figma.com/design/CToVphWm8MeGIu0DylezpF/App-Enter?node-id=0-1&p=f&t=fzVArD40gLenMqCm-0" target="_blank"><span class="project-title"><span class="badge-icon"><ion-icon name="log-in-outline"></ion-icon></span> Tela de login</span><span class="arrow-icon">→</span></a></div>
+        <div class="project-card"><a href="https://www.figma.com/design/oSLh7J3OQgQ0iJnMglLqkw/Untitled?node-id=0-1&t=0Q7NI7u89mVytK53-1" target="_blank"><span class="project-title"><span class="badge-icon"><ion-icon name="football-outline"></ion-icon></span> Site de esportes</span><span class="arrow-icon">→</span></a></div>
+      </div>
+    </div>
+
+    <div class="project-column">
+      <div class="column-header powerbi-header">
+        <ion-icon name="bar-chart-outline"></ion-icon>
+        <h2>Power BI<span style="font-size: 0.75rem; font-weight: 400; opacity:0.8;    margin: 10px;">Dashboards & KPIs</span></h2>
+      </div>
+      <div class="project-list">
+        <div class="project-card"><a href="https://app.powerbi.com/view?r=eyJrIjoiYzhlNTAyNzctYzk1Ni00Y2UyLWE0MTMtZmE5YWY1ZWMwN2YyIiwidCI6ImNmNzJlMmJkLTdhMmItNDc4My1iZGViLTM5ZDU3YjA3Zjc2ZiIsImMiOjR9" target="_blank"><span class="project-title"><span class="badge-icon"><ion-icon name="stats-chart-outline"></ion-icon></span> Produção Industrial</span><span class="arrow-icon">→</span></a></div>
+        <div class="project-card"><a href="https://app.powerbi.com/view?r=eyJrIjoiODM1ZjQ1NWMtZmMwYi00NmU4LThmYjQtYzdmMTg4ZjczYWY2IiwidCI6ImNmNzJlMmJkLTdhMmItNDc4My1iZGViLTM5ZDU3YjA3Zjc2ZiIsImMiOjR9" target="_blank"><span class="project-title"><span class="badge-icon"><ion-icon name="megaphone-outline"></ion-icon></span> Campanhas Marketing</span><span class="arrow-icon">→</span></a></div>
+        <div class="project-card"><a href="https://app.powerbi.com/view?r=eyJrIjoiODMwYzUwMjUtODIyYS00NmZhLWI4NzItNDE3MzM5ZGI1NmFiIiwidCI6ImNmNzJlMmJkLTdhMmItNDc4My1iZGViLTM5ZDU3YjA3Zjc2ZiIsImMiOjR9" target="_blank"><span class="project-title"><span class="badge-icon"><ion-icon name="analytics-outline"></ion-icon></span> Performance Cliente</span><span class="arrow-icon">→</span></a></div>
+        <div class="project-card"><a href="https://app.powerbi.com/view?r=eyJrIjoiMzhhZjJhNzktNjgwOS00ZjhiLWJmZjUtYmFiZjhmMDdlZDViIiwidCI6ImNmNzJlMmJkLTdhMmItNDc4My1iZGViLTM5ZDU3YjA3Zjc2ZiIsImMiOjR9" target="_blank"><span class="project-title"><span class="badge-icon"><ion-icon name="trending-up-outline"></ion-icon></span> Mercado de Ações</span><span class="arrow-icon">→</span></a></div>
+        <div class="project-card"><a href="https://app.powerbi.com/view?r=eyJrIjoiNGUzYzJhYTctODgzNy00OGUzLWFlNzgtZDU0YmFkMzdiZThhIiwidCI6ImNmNzJlMmJkLTdhMmItNDc4My1iZGViLTM5ZDU3YjA3Zjc2ZiIsImMiOjR9" target="_blank"><span class="project-title"><span class="badge-icon"><ion-icon name="people-outline"></ion-icon></span> Segmentação Clientes</span><span class="arrow-icon">→</span></a></div>
+        <div class="project-card"><a href="https://app.powerbi.com/view?r=eyJrIjoiYmJiYWExZmUtY2Y4ZS00MjVmLTg2N2MtNWY1ZDEzMGJlNjJmIiwidCI6ImNmNzJlMmJkLTdhMmItNDc4My1iZGViLTM5ZDU3YjA3Zjc2ZiIsImMiOjR9" target="_blank"><span class="project-title"><span class="badge-icon"><ion-icon name="scale-outline"></ion-icon></span> Balanço Patrimonial</span><span class="arrow-icon">→</span></a></div>
+      </div>
     </div>
   </div>
 
-<script src="script.js"></script>
+  <div class="social-footer">
+    <div class="social-links">
+      <a href="https://github.com/MatheusAbib" target="_blank"><ion-icon name="logo-github"></ion-icon></a>
+      <a href="https://matheus-abib-portfolio.netlify.app/" target="_blank"><ion-icon name="briefcase-outline"></ion-icon></a>
+      <a href="#" id="whatsappBtn"><ion-icon name="logo-whatsapp"></ion-icon></a>
+      <a href="https://www.linkedin.com/in/matheusabib/" target="_blank"><ion-icon name="logo-linkedin"></ion-icon></a>
+    </div>
+    <footer>
+      <p>Desenvolvido por <a href="https://matheus-abib-portfolio.netlify.app/" target="_blank">Matheus Abib</a> — Desenvolvedor de Software</p>
+    </footer>
+  </div>
+</div>
+
+<div id="globalModal" class="modal">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3>Matheus Bilitardo Abib</h3>
+      <button class="modal-close" id="closeModalBtn">✕</button>
+    </div>
+
+    <div class="modal-split">
+      <div class="modal-left">
+        <div class="modal-section">
+          <h4><ion-icon name="person-outline"></ion-icon> Quem sou eu</h4>
+          <p>Sou <strong>desenvolvedor de software</strong> há cerca de 4 anos, atuando com tecnologias <strong>front-end e back-end</strong> em projetos que vão desde sistemas para a Prefeitura de Mogi das Cruzes até aplicações próprias que publiquei e usei para aprender na prática.</p>
+          <p>Sou formado em <strong>Análise e Desenvolvimento de Sistemas</strong> pela Fatec de Mogi das Cruzes (2023-2026), o lugar que me deu minha primeira base para meu crescimento como programador. Atualmente curso <strong>Engenharia de Software</strong> na Universidade de Mogi das Cruzes e meu objetivo é aperfeiçoar o que eu mais gosto: <strong>programar</strong>.</p>
+        </div>
+
+        <div class="modal-section">
+          <h4><ion-icon name="hardware-chip-outline"></ion-icon> Hard Skills</h4>
+          <div class="skills-grid">
+            <span class="skill-tag">Angular</span>
+            <span class="skill-tag">React</span>
+            <span class="skill-tag">Spring Boot</span>
+            <span class="skill-tag">Node.js</span>
+            <span class="skill-tag">TypeScript</span>
+            <span class="skill-tag">Power BI</span>
+            <span class="skill-tag">Figma</span>
+            <span class="skill-tag">MYSQL</span>
+            <span class="skill-tag">Git/GitHub</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-right">
+        <div class="modal-section">
+          <h4><ion-icon name="document-text-outline"></ion-icon> Certificado Power BI</h4>
+          <img src="./assets/certificado.png" alt="certificado" class="cert-img" onerror="this.style.display='none'">
+          <p style="font-size: 0.85rem; opacity: 0.8;">• Microsoft Power BI Para Business Intelligence e Data Science<br></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="notification">@MatheusAbib copiado</div>
+<div id="notificationWttp">📞 +55 11 97507-2008 copiado</div>
+
+<script src="./script.js"></script>
 </body>
 </html>

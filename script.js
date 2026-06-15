@@ -1,86 +1,103 @@
-   // Dark/light mode com localStorage
-    const html = document.documentElement;
-    function toggleTheme() {
-      html.classList.toggle("light");
-      localStorage.setItem("theme", html.classList.contains("light") ? "light" : "dark");
-    }
-
-    if (localStorage.getItem("theme") === "light") {
-      html.classList.add("light");
-    }
-
-  function typeWriter(element, text, speed = 80) {
-  let i = 0;
-  element.innerHTML = "";
-  const typing = setInterval(() => {
-    if (i < text.length) {
-      element.innerHTML += text.charAt(i);
-      i++;
+  const htmlEl = document.documentElement;
+  const themeCheckbox = document.getElementById('theme-toggle-checkbox');
+  
+  function setTheme(theme) {
+    if (theme === 'light') {
+      htmlEl.classList.add('light');
+      htmlEl.classList.remove('dark');
+      themeCheckbox.checked = true;
     } else {
-      clearInterval(typing);
+      htmlEl.classList.remove('light');
+      htmlEl.classList.add('dark');
+      themeCheckbox.checked = false;
     }
-  }, speed);
-}
+    localStorage.setItem('theme', theme);
+  }
+  
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'light') setTheme('light');
+  else setTheme('dark');
+  
+  themeCheckbox.addEventListener('change', (e) => {
+    if (e.target.checked) setTheme('light');
+    else setTheme('dark');
+  });
 
-const welcome = document.getElementById("welcome");
-const hour = new Date().getHours();
-let message = "";
-
-if (hour < 12) message = "Bom dia! Explore todos os meus Dashboards interativos feitos no Power BI.";
-else if (hour < 18) message = "Boa tarde! Explore todos os meus Dashboards interativos feitos no Power BI.";
-else message = "Boa noite! Explore todos os meus Dashboards interativos feitos no Power BI.";
-
-typeWriter(welcome, message);
-
-
-    // Modal
-    function openModal() {
-      document.getElementById("modal").style.display = "flex";
+  function typeWriterWithCursor(element, text, speed = 45, callback) {
+    let i = 0;
+    element.innerHTML = '';
+    function typing() {
+      if (i < text.length) {
+        element.innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typing, speed);
+      } else if (callback) {
+        callback();
+      }
     }
+    typing();
+  }
 
-    function closeModal() {
-      document.getElementById("modal").style.display = "none";
-    }
-
-    // Copiar link do WhatsApp
-    function copyWhatsApp() {
-      const number = "+55 11975072008";
-      navigator.clipboard.writeText(number).then(() => {
-      const notification = document.getElementById('notificationWttp');
-        notification.style.display = 'block';
-        setTimeout(() => {
-          notification.style.display = 'none';
-        }, 2000);      });
-    }
-
-    // Fade-in ao rolar
-    const links = document.querySelectorAll("#linkList li a");
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = 1;
-          entry.target.style.transform = "translateY(0)";
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.2 });
-
-    links.forEach(link => observer.observe(link));
-
-   function copyUsername() {
-      navigator.clipboard.writeText('@MatheusAbib').then(() => {
-        const notification = document.getElementById('notification');
-        notification.style.display = 'block';
-        setTimeout(() => {
-          notification.style.display = 'none';
-        }, 2000);
-      });
-    }
-
-    function openModal() {
-      document.getElementById('modal').style.display = 'flex';
-    }
-
-    function closeModal() {
-      document.getElementById('modal').style.display = 'none';
-    }
+  const greetingEl = document.getElementById('dynamicGreeting');
+  const welcomeMsgSpan = document.getElementById('welcomeMessage');
+  
+  const hour = new Date().getHours();
+  let mainGreeting = '';
+  if (hour < 12) mainGreeting = 'Bom dia! Eu sou o Matheus';
+  else if (hour < 18) mainGreeting = 'Boa tarde! Eu sou o Matheus';
+  else mainGreeting = 'Boa noite! Eu sou o Matheus';
+  
+  const subMsg = 'Esse é meu Portfólio de Figma e Power BI';
+  
+  typeWriterWithCursor(greetingEl, mainGreeting, 55);
+  setTimeout(() => {
+    typeWriterWithCursor(welcomeMsgSpan, subMsg, 45);
+  }, 400);
+  
+  const modal = document.getElementById('globalModal');
+  const aboutBtn = document.getElementById('aboutBtnGlobal');
+  const closeModalBtn = document.getElementById('closeModalBtn');
+  
+  function openModal() {
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+  
+  function closeModal() {
+    modal.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+  
+  aboutBtn.addEventListener('click', openModal);
+  if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => { 
+    if (e.target === modal) closeModal();
+  });
+  
+  const usernameDiv = document.getElementById('usernameBtn');
+  const notif = document.getElementById('notification');
+  
+  function copyUsername() {
+    navigator.clipboard.writeText('@MatheusAbib').then(() => {
+      notif.style.display = 'block';
+      setTimeout(() => notif.style.display = 'none', 2000);
+    });
+  }
+  usernameDiv.addEventListener('click', copyUsername);
+  
+  const whatsBtn = document.getElementById('whatsappBtn');
+  const notifWpp = document.getElementById('notificationWttp');
+  function copyWhatsApp(e) {
+    e.preventDefault();
+    const number = "+55 11975072008";
+    navigator.clipboard.writeText(number).then(() => {
+      notifWpp.style.display = 'block';
+      setTimeout(() => notifWpp.style.display = 'none', 2000);
+    });
+  }
+  whatsBtn.addEventListener('click', copyWhatsApp);
+  
+  const allProjectCards = document.querySelectorAll('.project-card');
+  allProjectCards.forEach((card, idx) => {
+    card.style.animationDelay = `${idx * 0.04}s`;
+  });
