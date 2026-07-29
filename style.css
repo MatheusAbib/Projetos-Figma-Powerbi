@@ -4,79 +4,87 @@
       box-sizing: border-box;
     }
 
-    :root {
-      --ink: #1c1c1a;
-      --cream: #f5f3ee;
-      --green-deep: #505039;
-      --green-soft: #a7aa63;
-      --matheus: #a7aa63;
-      --red-deep: #551d21;
-      --red-soft: #86383a;
-      --fg: #f5f3ee;
-      --fg-muted: #f5f3ee9e;
-      --fg-faint: #f5f3ee66;
-      --surface-1: #f5f3ee0a;
-      --surface-2: rgb(245 243 238 / 54%);
-      --hairline: #f5f3ee1f;
-      --radius-none: 0px;
-      --radius-xs: 2px;
-      --radius-sm: 6px;
-      --radius-md: 10px;
-      --radius-lg: 16px;
-      --radius-pill: 9999px;
-      --space-1: 4px;
-      --space-2: 8px;
-      --space-3: 12px;
-      --space-4: 16px;
-      --space-5: 24px;
-      --space-6: 32px;
-      --space-7: 48px;
-      --space-8: 64px;
-      --space-9: 96px;
-      --space-10: 128px;
-      --overlay-opacity: 0.5;
-      
-       --bg-url: url('./assets/bg-desktop-light.png');
-      --text-color: var(--cream);
-      --text-secondary: var(--fg-muted);
-      --card-bg: var(--surface-1);
-      --modal-bg: var(--surface-1);
-      --card-border: var(--hairline);
-      --hover-bg: var(--surface-2);
-      --accent: var(--green-deep);
-      --accent-soft: var(--green-soft);
-      --accent-glow: rgba(80, 80, 57, 0.45);
-      --shadow-sm: 0 8px 20px rgba(0, 0, 0, 0.3);
-      --shadow-glow: 0 0 20px rgba(80, 80, 57, 0.35);
-      --body-bg: var(--ink);
-      --header-gradient: linear-gradient(135deg, rgba(80, 80, 57, 0.15), rgba(0, 0, 0, 0.3));
-      --cursor-color: var(--green-deep);
-      --figma-color: var(--red-soft);
-      --powerbi-color: var(--green-soft);
-      --skill-tag-bg: rgba(80, 80, 57, 0.15);
-    }
+:root {
+  --ink: #1c1c1a;
+  --cream: #f5f3ee;
+  --green-deep: #505039;
+  --green-soft: #a7aa63;
+  --matheus: #a7aa63;
+  --red-deep: #551d21;
+  --red-soft: #86383a;
+  --fg: #f5f3ee;
+  --fg-muted: #f5f3ee9e;
+  --fg-faint: #f5f3ee66;
+  --surface-1: #f5f3ee0a;
+  --surface-2: rgb(245 243 238 / 54%);
+  --hairline: #f5f3ee1f;
+  
+  --figma-color: #ffffff;        
+  --powerbi-color: #ffffff;      
+  --figma-shadow: rgba(255, 255, 255, 0.3);
+  --powerbi-shadow: rgba(255, 255, 255, 0.3);
+  
+  --radius-none: 0px;
+  --radius-xs: 2px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-pill: 9999px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
+  --overlay-opacity: 0.5;
+  --bg-url: url('./assets/bg-desktop-light.png');
+  --text-color: var(--cream);
+  --text-secondary: var(--fg-muted);
+  --card-bg: var(--surface-1);
+  --modal-bg: var(--surface-1);
+  --card-border: var(--hairline);
+  --hover-bg: var(--surface-2);
+  --accent: var(--green-deep);
+  --accent-soft: var(--green-soft);
+  --accent-glow: rgba(80, 80, 57, 0.45);
+  --shadow-sm: 0 8px 20px rgba(0, 0, 0, 0.3);
+  --shadow-glow: 0 0 20px rgba(80, 80, 57, 0.35);
+  --body-bg: var(--ink);
+  --header-gradient: linear-gradient(135deg, rgba(80, 80, 57, 0.15), rgba(0, 0, 0, 0.3));
+  --cursor-color: var(--green-deep);
+  --skill-tag-bg: rgba(80, 80, 57, 0.15);
+}
 
-    .light {
-      --bg-url: url('./assets/bg-desktop-light.png');
-      --overlay-opacity: 0.2;
-      --text-color: var(--ink);
-      --matheus: var(--green-deep);
-      --text-secondary: #1c1c1a9e;
-      --card-bg: rgba(245, 243, 238, 0.733);
-      --modal-bg: rgba(245, 243, 238, 0.938);
-      --card-border: rgba(28, 28, 26, 0.08);
-      --hover-bg: rgba(28, 28, 26, 0.04);
-      --shadow-sm: 0 8px 25px rgba(0, 0, 0, 0.06);
-      --shadow-glow: 0 0 15px rgba(167, 170, 99, 0.2);
-      --body-bg: var(--cream);
-      --header-gradient:  rgba(255, 255, 255, 0.2);
-      --cursor-color: var(--green-soft);
-      --accent: var(--green-soft);
-      --accent-soft: var(--green-deep);
-      --accent-glow: rgba(167, 170, 99, 0.45);
-      --skill-tag-bg: rgba(167, 170, 99, 0.15);
-    }
-
+.light {
+  --bg-url: url('./assets/bg-desktop-light.png');
+  --overlay-opacity: 0.2;
+  --text-color: var(--ink);
+  --matheus: var(--green-deep);
+  --text-secondary: #1c1c1a9e;
+  --card-bg: rgb(245 243 238 / 61%);
+  --modal-bg: rgba(245, 243, 238, 0.938);
+  --card-border: rgba(28, 28, 26, 0.08);
+  --hover-bg: rgba(28, 28, 26, 0.04);
+  --shadow-sm: 0 8px 25px rgba(0, 0, 0, 0.06);
+  --shadow-glow: 0 0 15px rgba(167, 170, 99, 0.2);
+  --body-bg: var(--cream);
+  --header-gradient: rgba(255, 255, 255, 0.2);
+  --cursor-color: var(--green-soft);
+  --accent: var(--green-soft);
+  
+  --figma-color: var(--red-soft); 
+  --powerbi-color: var(--green-soft);
+  --figma-shadow: rgba(134, 56, 58, 0.4);
+  --powerbi-shadow: rgba(167, 170, 99, 0.4);
+  
+  --accent-soft: var(--green-deep);
+  --accent-glow: rgba(167, 170, 99, 0.45);
+  --skill-tag-bg: rgba(167, 170, 99, 0.15);
+}
     body {
       font-family: 'Space Grotesk', 'Inter', sans-serif;
       background: var(--body-bg);
@@ -194,7 +202,6 @@ body::after {
       background: var(--accent);
       color: var(--cream);
       transform: translateY(-2px);
-      box-shadow: 0 6px 14px var(--accent-glow);
       border-color: transparent;
     }
 
@@ -231,7 +238,7 @@ body::after {
       width: 30px;
       left: 3px;
       bottom: 2px;
-      background:  var(--green-deep);
+      background: var(--green-soft);
       border-radius: 50%;
       transition: transform 0.3s;
     }
@@ -246,7 +253,7 @@ body::after {
 
 .theme-slider .sun-icon {
   left: 8px;
-  color: var(--green-soft);
+  color: white;
   opacity: 0.9;
 }
 
@@ -307,7 +314,7 @@ body::after {
       flex: 1;
       min-width: 280px;
       background: var(--card-bg);
-      backdrop-filter: blur(16px);
+      backdrop-filter: blur(15px);
       border-radius: 26px;
       border: 1px solid var(--card-border);
       overflow: hidden;
@@ -337,8 +344,17 @@ body::after {
       letter-spacing: -0.3px;
     }
 
-    .figma-header ion-icon { color: var(--figma-color); filter: drop-shadow(0 0 6px rgba(134, 56, 58, 0.4)); }
-    .powerbi-header ion-icon { color: var(--powerbi-color); filter: drop-shadow(0 0 6px rgba(167, 170, 99, 0.4)); }
+    .figma-header ion-icon { 
+      color: var(--figma-color, #ffffff); 
+      filter: drop-shadow(0 0 8px var(--figma-shadow, rgba(255, 255, 255, 0.2)));
+      transition: all 0.3s ease;
+    }
+
+    .powerbi-header ion-icon { 
+      color: var(--powerbi-color, #ffffff); 
+      filter: drop-shadow(0 0 8px var(--powerbi-shadow, rgba(255, 255, 255, 0.2)));
+      transition: all 0.3s ease;
+    }
 
     .project-list {
       padding: 20px 24px 32px;
@@ -352,7 +368,7 @@ body::after {
       border-radius: 24px;
       padding: 14px 20px;
       transition: all 0.25s ease;
-      border: 1px solid transparent;
+      border: 1px solid  #00000004;
     }
 
     .project-card a {
@@ -463,7 +479,6 @@ body::after {
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.75);
       backdrop-filter: blur(12px);
       justify-content: center;
       align-items: center;
@@ -482,7 +497,6 @@ body::after {
       border: 1px solid var(--card-border);
       padding: 36px;
       color: var(--text-color);
-      box-shadow: 0 30px 50px rgba(0,0,0,0.4);
       animation: modalFadeIn 0.3s ease;
     }
 
