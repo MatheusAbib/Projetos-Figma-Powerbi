@@ -1,27 +1,7 @@
   const htmlEl = document.documentElement;
   const themeCheckbox = document.getElementById('theme-toggle-checkbox');
   
-  function setTheme(theme) {
-    if (theme === 'light') {
-      htmlEl.classList.add('light');
-      htmlEl.classList.remove('dark');
-      themeCheckbox.checked = true;
-    } else {
-      htmlEl.classList.remove('light');
-      htmlEl.classList.add('dark');
-      themeCheckbox.checked = false;
-    }
-    localStorage.setItem('theme', theme);
-  }
-  
-  const savedTheme = localStorage.getItem('theme');
-  if (savedTheme === 'light') setTheme('light');
-  else setTheme('dark');
-  
-  themeCheckbox.addEventListener('change', (e) => {
-    if (e.target.checked) setTheme('light');
-    else setTheme('dark');
-  });
+
 
   function typeWriterWithCursor(element, text, speed = 45, callback) {
     let i = 0;

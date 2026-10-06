@@ -9,13 +9,13 @@
   --cream: #f5f3ee;
   --green-deep: #505039;
   --green-soft: #a7aa63;
-  --matheus: #a7aa63;
+  --matheus: var(--fg);
   --red-deep: #551d21;
   --red-soft: #86383a;
   --fg: #f5f3ee;
   --fg-muted: #f5f3ee9e;
   --fg-faint: #f5f3ee66;
-  --surface-1: #f5f3ee0a;
+  --surface-1: #b1b1b10a;
   --surface-2: rgb(245 243 238 / 54%);
   --hairline: #f5f3ee1f;
   
@@ -44,17 +44,17 @@
   --bg-url: url('./assets/bg-desktop-light.png');
   --text-color: var(--cream);
   --text-secondary: var(--fg-muted);
-  --card-bg: var(--surface-1);
-  --modal-bg: var(--surface-1);
+  --card-bg: #b1b1b162;
+  --modal-bg: #0000003b;
   --card-border: var(--hairline);
   --hover-bg: var(--surface-2);
-  --accent: var(--green-deep);
+  --accent: #a7aa63;
   --accent-soft: var(--green-soft);
   --accent-glow: rgba(80, 80, 57, 0.45);
   --shadow-sm: 0 8px 20px rgba(0, 0, 0, 0.3);
   --shadow-glow: 0 0 20px rgba(80, 80, 57, 0.35);
   --body-bg: var(--ink);
-  --header-gradient: linear-gradient(135deg, rgba(80, 80, 57, 0.15), rgba(0, 0, 0, 0.3));
+  --header-gradient: linear-gradient(135deg, rgba(80, 80, 57, 0.25), rgba(0, 0, 0, 0.3));
   --cursor-color: var(--green-deep);
   --skill-tag-bg: rgba(80, 80, 57, 0.15);
 }
@@ -65,7 +65,7 @@
   --text-color: var(--ink);
   --matheus: var(--green-deep);
   --text-secondary: #1c1c1a9e;
-  --card-bg: rgb(245 243 238 / 61%);
+  --card-bg: rgb(245 243 238 / 85%);
   --modal-bg: rgba(245, 243, 238, 0.938);
   --card-border: rgba(28, 28, 26, 0.08);
   --hover-bg: rgba(28, 28, 26, 0.04);
@@ -127,9 +127,8 @@ body::after {
     .main-header {
       background: var(--header-gradient);
       backdrop-filter: blur(16px);
-      border-radius: 26px;
+      border-radius: 18px;
       border: 1px solid var(--card-border);
-      box-shadow: var(--shadow-sm);
       margin-bottom: 26px;
       overflow: hidden;
       transition: all 0.3s;
@@ -154,11 +153,13 @@ body::after {
       border-radius: 100px;
       transition: all 0.25s;
       background: var(--surface-1);
+      text-decoration: none;
+      background: var(--hover-bg);
     }
 
     .profile-tag:hover {
-      background: var(--hover-bg);
-      transform: translateY(-2px);
+      text-decoration: underline;
+      color: var(--text-color);
     }
 
     .profile-tag img {
@@ -167,13 +168,13 @@ body::after {
       border-radius: 50%;
       object-fit: cover;
       border: 2px solid var(--accent);
-      box-shadow: 0 0 8px var(--accent-glow);
     }
 
     .profile-tag span {
       font-weight: 700;
       font-size: 1.1rem;
       letter-spacing: -0.2px;
+      color: var(--text-color);
     }
 
     .header-actions {
@@ -201,73 +202,10 @@ body::after {
     .btn-ghost:hover {
       background: var(--accent);
       color: var(--cream);
-      transform: translateY(-2px);
       border-color: transparent;
     }
 
-    .theme-switch {
-      position: relative;
-      width: 70px;
-      height: 36px;
-    }
-
-    .theme-switch input {
-      opacity: 0;
-      width: 0;
-      height: 0;
-    }
-
-    .theme-slider {
-      position: absolute;
-      cursor: pointer;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: var(--surface-1);
-      border-radius: 60px;
-      border: 1px solid var(--card-border);
-      backdrop-filter: blur(4px);
-      transition: 0.3s;
-    }
-
-    .theme-slider::before {
-      position: absolute;
-      content: "";
-      height: 30px;
-      width: 30px;
-      left: 3px;
-      bottom: 2px;
-      background: var(--green-soft);
-      border-radius: 50%;
-      transition: transform 0.3s;
-    }
-
-    .theme-slider .theme-icon {
-      position: absolute;
-      font-size: 16px;
-      top: 50%;
-      transform: translateY(-50%);
-      pointer-events: none;
-    }
-
-.theme-slider .sun-icon {
-  left: 8px;
-  color: white;
-  opacity: 0.9;
-}
-
-.theme-slider .moon-icon {
-  right: 8px;
-  color: var(--green-deep);
-  opacity: 0.9;
-}
-
-    input:checked + .theme-slider::before {
-      transform: translateX(32px);
-      background: linear-gradient(135deg, #fbbf24, #f59e0b);
-    }
-
+  
     .typewriter-area {
       flex: 1;
       text-align: center;
@@ -315,15 +253,10 @@ body::after {
       min-width: 280px;
       background: var(--card-bg);
       backdrop-filter: blur(15px);
-      border-radius: 26px;
+      border-radius: 18px;
       border: 1px solid var(--card-border);
       overflow: hidden;
       transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1), box-shadow 0.3s;
-      box-shadow: var(--shadow-sm);
-    }
-
-    .project-column:hover {
-      box-shadow: 0 25px 40px rgba(0, 0, 0, 0.2), var(--shadow-glow);
     }
 
     .column-header {
@@ -343,19 +276,6 @@ body::after {
       font-weight: 700;
       letter-spacing: -0.3px;
     }
-
-    .figma-header ion-icon { 
-      color: var(--figma-color, #ffffff); 
-      filter: drop-shadow(0 0 8px var(--figma-shadow, rgba(255, 255, 255, 0.2)));
-      transition: all 0.3s ease;
-    }
-
-    .powerbi-header ion-icon { 
-      color: var(--powerbi-color, #ffffff); 
-      filter: drop-shadow(0 0 8px var(--powerbi-shadow, rgba(255, 255, 255, 0.2)));
-      transition: all 0.3s ease;
-    }
-
     .project-list {
       padding: 20px 24px 32px;
       display: flex;
@@ -365,7 +285,7 @@ body::after {
 
     .project-card {
       background: var(--surface-1);
-      border-radius: 24px;
+      border-radius: 14px;
       padding: 14px 20px;
       transition: all 0.25s ease;
       border: 1px solid  #00000004;
@@ -396,13 +316,7 @@ body::after {
     }
 
     .project-card:hover {
-      background: var(--accent);
-      border-color: var(--hairline);
-      transform: translateX(8px);
-    }
-
-    .project-card:hover a {
-      color: var(--cream);
+      background: var(--hover-bg);
     }
 
     .project-card:hover .arrow-icon {
@@ -419,7 +333,7 @@ body::after {
     .social-footer {
       background: var(--card-bg);
       backdrop-filter: blur(12px);
-      border-radius: 26px;
+      border-radius: 18px;
       padding: 18px 28px;
       display: flex;
       flex-wrap: wrap;
@@ -452,7 +366,6 @@ body::after {
     .social-links a:hover {
       background: var(--accent);
       color: var(--cream);
-      transform: translateY(-5px) scale(1.05);
     }
 
     footer p {
@@ -470,6 +383,7 @@ body::after {
 
     footer a:hover {
       text-decoration: underline;
+      color: black;
     }
 
     .modal {
@@ -480,6 +394,7 @@ body::after {
       width: 100%;
       height: 100%;
       backdrop-filter: blur(12px);
+      background: #3939392a;
       justify-content: center;
       align-items: center;
       z-index: 1000;
@@ -584,7 +499,6 @@ body::after {
 
     .modal-section h4 {
       font-size: 1.2rem;
-      margin-bottom: 12px;
       display: flex;
       align-items: center;
       gap: 8px;
@@ -650,7 +564,6 @@ body::after {
       font-weight: 600;
       z-index: 1100;
       display: none;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
       backdrop-filter: blur(8px);
       font-size: 0.9rem;
     }

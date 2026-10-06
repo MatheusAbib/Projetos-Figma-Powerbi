@@ -2,6 +2,8 @@
 
 Bem-vindo(a) ao meu portfólio! Este é um projeto responsivo que reúne todos os meus principais projetos desenvolvidos no **Figma** (UI/UX) e **Power BI** (Data Analytics), além de links para minhas redes sociais e portfólio.
 
+> 🔗 **Acesse o projeto online:** [Projetos-Figma-Powerbi](https://matheusabib.github.io/Projetos-Figma-Powerbi/)
+
 ## ✨ Funcionalidades
 
 - Interface moderna com cards organizados por categoria
@@ -20,6 +22,8 @@ Bem-vindo(a) ao meu portfólio! Este é um projeto responsivo que reúne todos o
 | Site de presentes | [Acessar](https://www.figma.com/design/doG1DauC0MTdzhOMUKHrS5/Web-Master) |
 | Tela de login | [Acessar](https://www.figma.com/design/CToVphWm8MeGIu0DylezpF/App-Enter) |
 | Site de esportes | [Acessar](https://www.figma.com/design/oSLh7J3OQgQ0iJnMglLqkw/Untitled) |
+| Convites de Divulgação | [Acessar](https://www.figma.com/design/Js8d3O7ZU0n55beUFDy23X/Convites---Semana-de-Tecnologia-2026?node-id=0-1&t=SMNBj6FRyKFEsYLh-1) |
+
 
 ## 📊 Meus Dashboards no Power BI
 
