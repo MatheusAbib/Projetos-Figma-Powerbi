@@ -585,23 +585,30 @@ body::after {
     }
 
     @media (max-width: 800px) {
-      body { padding: 20px 16px; }
+      body { padding: 10px 5px; }
       .header-top { flex-direction: column; align-items: stretch; padding: 16px 18px; }
       .header-actions { justify-content: center; }
       .typewriter-area { padding: 0; text-align: center; }
       .column-header h2 { font-size: 1.5rem; }
       .project-list { padding: 16px 18px 28px; }
-      .modal-card { padding: 20px; }
+      .modal-card { padding: 15px; border-radius: 20px;}
+      .dashboard-row{
+            gap: 16px;
+      }
+      .main-header, .dashboard-row{
+            margin-bottom: 22px;
+      }
+      
     }
 
     @media (max-width: 680px) {
       .dashboard-row { flex-direction: column; gap: 20px;}
       .project-card .project-title { font-size: 0.9rem; }
       .modal{
-        padding: 10px;
+        padding: 5px;
       }
       body{
-        padding: 16px 10px;
+        padding: 10px 5px;
       }
       #dynamicGreeting{
             font-size: 1.1rem;
