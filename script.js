@@ -1,83 +1,208 @@
-  const htmlEl = document.documentElement;
-  const themeCheckbox = document.getElementById('theme-toggle-checkbox');
-  
 
+const greetingEl = document.getElementById("dynamicGreeting");
+const welcomeMsgSpan = document.getElementById("welcomeMessage");
+const modal = document.getElementById("globalModal");
+const modalCard = modal?.querySelector(".modal-card");
+const aboutBtn = document.getElementById("aboutBtnGlobal");
+const aboutBtnProfile = document.getElementById("aboutBtnProfile");
+const closeModalBtn = document.getElementById("closeModalBtn");
+const usernameBtn = document.getElementById("usernameBtn");
+const whatsBtn = document.getElementById("whatsappBtn");
+const profileWhatsappBtn = document.getElementById("profileWhatsappBtn");
+const notification = document.getElementById("notification");
+const currentYear = document.getElementById("currentYear");
 
-  function typeWriterWithCursor(element, text, speed = 45, callback) {
-    let i = 0;
-    element.innerHTML = '';
-    function typing() {
-      if (i < text.length) {
-        element.innerHTML += text.charAt(i);
-        i++;
-        setTimeout(typing, speed);
-      } else if (callback) {
-        callback();
-      }
+let lastFocusedElement = null;
+let notificationTimeout = null;
+
+function typeWriter(element, text, speed = 45, callback = null) {
+  if (!element) {
+    if (callback) callback();
+    return;
+  }
+
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (reducedMotion) {
+    element.textContent = text;
+    if (callback) callback();
+    return;
+  }
+
+  let index = 0;
+  element.textContent = "";
+
+  const cursor = document.createElement("span");
+  cursor.className = "cursor";
+  cursor.setAttribute("aria-hidden", "true");
+  element.appendChild(cursor);
+
+  function type() {
+    if (index < text.length) {
+      element.insertBefore(
+        document.createTextNode(text.charAt(index)),
+        cursor
+      );
+
+      index++;
+      setTimeout(type, speed);
+    } else if (callback) {
+      callback();
     }
-    typing();
   }
 
-  const greetingEl = document.getElementById('dynamicGreeting');
-  const welcomeMsgSpan = document.getElementById('welcomeMessage');
-  
+  type();
+}
+
+function initializeGreeting() {
   const hour = new Date().getHours();
-  let mainGreeting = '';
-  if (hour < 12) mainGreeting = 'Bom dia! Eu sou o Matheus';
-  else if (hour < 18) mainGreeting = 'Boa tarde! Eu sou o Matheus';
-  else mainGreeting = 'Boa noite! Eu sou o Matheus';
-  
-  const subMsg = 'Esse é meu Portfólio de Figma e Power BI';
-  
-  typeWriterWithCursor(greetingEl, mainGreeting, 55);
-  setTimeout(() => {
-    typeWriterWithCursor(welcomeMsgSpan, subMsg, 45);
-  }, 400);
-  
-  const modal = document.getElementById('globalModal');
-  const aboutBtn = document.getElementById('aboutBtnGlobal');
-  const closeModalBtn = document.getElementById('closeModalBtn');
-  
-  function openModal() {
-    modal.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
+
+  let greeting;
+
+  if (hour < 12) {
+    greeting = "Bom dia!\nEu sou o Matheus";
+  } else if (hour < 18) {
+    greeting = "Boa tarde!\nEu sou o Matheus";
+  } else {
+    greeting = "Boa noite!\nEu sou o Matheus";
   }
-  
-  function closeModal() {
-    modal.style.display = 'none';
-    document.body.style.overflow = '';
-  }
-  
-  aboutBtn.addEventListener('click', openModal);
-  if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
-  modal.addEventListener('click', (e) => { 
-    if (e.target === modal) closeModal();
+
+  const subtitle = "Esse é meu portfólio para projetos no Figma e Power BI";
+
+  typeWriter(greetingEl, greeting, 42, () => {
+    typeWriter(welcomeMsgSpan, subtitle, 24);
   });
-  
-  const usernameDiv = document.getElementById('usernameBtn');
-  const notif = document.getElementById('notification');
-  
-  function copyUsername() {
-    navigator.clipboard.writeText('@MatheusAbib').then(() => {
-      notif.style.display = 'block';
-      setTimeout(() => notif.style.display = 'none', 2000);
-    });
+}
+
+function openModal() {
+  if (!modal || !closeModalBtn) return;
+
+  lastFocusedElement = document.activeElement;
+
+  modal.classList.add("is-open");
+  modal.setAttribute("aria-hidden", "false");
+  document.body.classList.add("modal-open");
+
+  closeModalBtn.focus();
+}
+
+function closeModal() {
+  if (!modal) return;
+
+  modal.classList.remove("is-open");
+  modal.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("modal-open");
+
+  if (lastFocusedElement && typeof lastFocusedElement.focus === "function") {
+    lastFocusedElement.focus();
   }
-  usernameDiv.addEventListener('click', copyUsername);
-  
-  const whatsBtn = document.getElementById('whatsappBtn');
-  const notifWpp = document.getElementById('notificationWttp');
-  function copyWhatsApp(e) {
-    e.preventDefault();
-    const number = "+55 11975072008";
-    navigator.clipboard.writeText(number).then(() => {
-      notifWpp.style.display = 'block';
-      setTimeout(() => notifWpp.style.display = 'none', 2000);
-    });
+}
+
+function handleModalKeyboard(event) {
+  if (!modal || !modalCard || !modal.classList.contains("is-open")) return;
+
+  if (event.key === "Escape") {
+    closeModal();
+    return;
   }
-  whatsBtn.addEventListener('click', copyWhatsApp);
-  
-  const allProjectCards = document.querySelectorAll('.project-card');
-  allProjectCards.forEach((card, idx) => {
-    card.style.animationDelay = `${idx * 0.04}s`;
+
+  if (event.key !== "Tab") return;
+
+  const focusableElements = Array.from(
+    modalCard.querySelectorAll(
+      'a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])'
+    )
+  ).filter(element => element.getClientRects().length > 0);
+
+  if (!focusableElements.length) {
+    event.preventDefault();
+    modalCard.focus();
+    return;
+  }
+
+  const first = focusableElements[0];
+  const last = focusableElements[focusableElements.length - 1];
+
+  if (event.shiftKey && document.activeElement === first) {
+    event.preventDefault();
+    last.focus();
+  } else if (!event.shiftKey && document.activeElement === last) {
+    event.preventDefault();
+    first.focus();
+  }
+}
+
+function showNotification(message) {
+  if (!notification) return;
+
+  clearTimeout(notificationTimeout);
+
+  notification.textContent = message;
+  notification.classList.add("visible");
+
+  notificationTimeout = setTimeout(() => {
+    notification.classList.remove("visible");
+  }, 2600);
+}
+
+async function copyText(text, successMessage) {
+  try {
+    await navigator.clipboard.writeText(text);
+    showNotification(successMessage);
+  } catch {
+    showNotification("Não foi possível copiar automaticamente.");
+  }
+}
+
+if (aboutBtn) {
+  aboutBtn.addEventListener("click", openModal);
+}
+
+if (aboutBtnProfile) {
+  aboutBtnProfile.addEventListener("click", openModal);
+
+  aboutBtnProfile.addEventListener("keydown", event => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      openModal();
+    }
   });
+}
+
+if (closeModalBtn) {
+  closeModalBtn.addEventListener("click", closeModal);
+}
+
+if (modal) {
+  modal.addEventListener("click", event => {
+    if (event.target === modal) {
+      closeModal();
+    }
+  });
+}
+
+document.addEventListener("keydown", handleModalKeyboard);
+
+if (usernameBtn) {
+  usernameBtn.addEventListener("click", () => {
+    copyText("@MatheusAbib", "Usuário do LinkedIn copiado!");
+  });
+}
+
+if (whatsBtn) {
+  whatsBtn.addEventListener("click", () => {
+    copyText("+5511975072008", "Número do WhatsApp copiado!");
+  });
+}
+
+if (profileWhatsappBtn) {
+  profileWhatsappBtn.addEventListener("click", () => {
+    copyText("+5511975072008", "Número do WhatsApp copiado!");
+  });
+}
+
+if (currentYear) {
+  currentYear.textContent = new Date().getFullYear();
+}
+
+initializeGreeting();
