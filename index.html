@@ -30,13 +30,17 @@
 
         <nav class="header-nav" aria-label="Navegação principal">
           <a href="#projetos">Projetos</a>
-          <button type="button" id="aboutBtnGlobal" class="about-button">
-            Sobre mim
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M7 17 17 7M7 7h10v10"/>
-            </svg>
-          </button>
-        </nav>
+
+
+
+            <button type="button" id="aboutBtnGlobal" class="about-button">
+              Sobre mim
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M7 17 17 7M7 7h10v10"/>
+              </svg>
+            </button>
+          </nav>
+
       </header>
 
       <section class="hero" id="inicio">
@@ -50,12 +54,42 @@
 
           <p id="welcomeMessage" class="hero-description"></p>
 
-          <div class="hero-actions">
-            <a href="#projetos" class="primary-button">
-              Explorar projetos
-              <ion-icon name="arrow-down-outline"></ion-icon>
-            </a>
-          </div>
+
+<div class="hero-actions">
+  <a href="#projetos" class="primary-button">
+    Explorar projetos
+    <ion-icon name="arrow-down-outline"></ion-icon>
+  </a>
+
+  <div class="cv-dropdown" id="cvDropdown">
+    <button
+      type="button"
+      class="cv-dropdown-button"
+      id="cvDropdownBtn"
+      aria-expanded="false"
+      aria-haspopup="true"
+      aria-controls="cvDropdownMenu"
+      aria-label="Baixar currículo"
+    >
+      <ion-icon name="download-outline"></ion-icon>
+      <span>Currículo</span>
+      <ion-icon name="chevron-down-outline"></ion-icon>
+    </button>
+
+    <div class="cv-dropdown-menu" id="cvDropdownMenu">
+      <a href="./assets/CV/matheus_abib_curriculo.pdf" target="_blank" rel="noopener noreferrer">
+        <ion-icon name="flag-outline"></ion-icon>
+        Português
+      </a>
+
+      <a href="./assets/CV/matheus_abib_resume.pdf" target="_blank" rel="noopener noreferrer">
+        <ion-icon name="globe-outline"></ion-icon>
+        Inglês
+      </a>
+    </div>
+  </div>
+</div>
+
         </div>
 
 

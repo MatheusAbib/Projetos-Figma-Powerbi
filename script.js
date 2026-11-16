@@ -11,6 +11,8 @@ const whatsBtn = document.getElementById("whatsappBtn");
 const profileWhatsappBtn = document.getElementById("profileWhatsappBtn");
 const notification = document.getElementById("notification");
 const currentYear = document.getElementById("currentYear");
+const cvDropdown = document.getElementById("cvDropdown");
+const cvDropdownBtn = document.getElementById("cvDropdownBtn");
 
 let lastFocusedElement = null;
 let notificationTimeout = null;
@@ -67,7 +69,7 @@ function initializeGreeting() {
     greeting = "Boa noite!\nEu sou o Matheus";
   }
 
-  const subtitle = "Esse é meu portfólio para projetos no Figma e Power BI";
+  const subtitle = "Esse é meu portfólio para projetos Figma e Power BI";
 
   typeWriter(greetingEl, greeting, 42, () => {
     typeWriter(welcomeMsgSpan, subtitle, 24);
@@ -154,6 +156,13 @@ async function copyText(text, successMessage) {
   }
 }
 
+function closeCvDropdown() {
+  if (!cvDropdown || !cvDropdownBtn) return;
+
+  cvDropdown.classList.remove("is-open");
+  cvDropdownBtn.setAttribute("aria-expanded", "false");
+}
+
 if (aboutBtn) {
   aboutBtn.addEventListener("click", openModal);
 }
@@ -198,6 +207,30 @@ if (whatsBtn) {
 if (profileWhatsappBtn) {
   profileWhatsappBtn.addEventListener("click", () => {
     copyText("+5511975072008", "Número do WhatsApp copiado!");
+  });
+}
+
+if (cvDropdown && cvDropdownBtn) {
+  cvDropdownBtn.addEventListener("click", () => {
+    const isOpen = cvDropdown.classList.toggle("is-open");
+    cvDropdownBtn.setAttribute("aria-expanded", String(isOpen));
+  });
+
+  document.addEventListener("click", event => {
+    if (!cvDropdown.contains(event.target)) {
+      closeCvDropdown();
+    }
+  });
+
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape" && cvDropdown.classList.contains("is-open")) {
+      closeCvDropdown();
+      cvDropdownBtn.focus();
+    }
+  });
+
+  cvDropdown.querySelectorAll(".cv-dropdown-menu a").forEach(link => {
+    link.addEventListener("click", closeCvDropdown);
   });
 }
 
